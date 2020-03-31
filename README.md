@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Esta aplicación web consume la API de https://rickandmortyapi.com/ visualizando información sobre sus personajes, episodios entre otros datos.
 
-Things you may want to cover:
+URL: 
 
-* Ruby version
+Versiones:
+
+* Versión de Ruby: ruby 2.5.7p206 (2019-10-01 revision 67816) [x86_64-linux] 
+
+* Versión de Rails: 6.0.2.2 
 
 * System dependencies
 
 * Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
