@@ -26,9 +26,9 @@
            <% while i< @length do %>
              <tr>
                <th scope="row"><%=i+1%></th>
-               <td><%= @results[i]["name"]%></td>
-               <td><%= @results[i]["air_date"]%></td>
-               <td><%= @results[i]["episode"]%></td>
+               <td><%= @episode_results[i]["name"]%></td>
+               <td><%= @episode_results[i]["air_date"]%></td>
+               <td><%= @episode_results[i]["episode"]%></td>
              </tr>
              <% i += 1%>
            <% end %>
