@@ -18,7 +18,7 @@ class GreetingsController < ApplicationController
           results = JSON.parse(body)
           j = 0
           while j < results["results"].length
-            episode_results << results["results"][i]
+            episode_results << results["results"][j]
             j += 1
           end
           i += 1
