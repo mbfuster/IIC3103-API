@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <div class="container pt-3">
+    <h3>Información por capítulo</h3>
+    <div class="container p-3 mb-2 bg-light text-dark">
+      <h1 class="display-6" ><%=@chapter_result["name"]%></h1>
+      <div class="container">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td>Fecha de estreno: </td>
+              <td><%=@chapter_result["air_date"]%></td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td>Código</td>
+              <td><%=@chapter_result["episode"]%></td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td colspan="2">Personajes</td>
+            </tr>
+          </tbody>
+        </table>
+        
+      </div>
+    </div>
+    <p><%= @chapter_result%></p>
+  </div>
+</body>

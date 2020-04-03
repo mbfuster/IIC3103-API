@@ -26,7 +26,8 @@
            <% while i< @length do %>
              <tr>
                <th scope="row"><%=i+1%></th>
-               <td><%= @episode_results[i]["name"]%></td>
+               <%name = @episode_results[i]["name"]%>
+               <td><%= link_to name, chapter_path(@episode_results[i]["id"])%></td>
                <td><%= @episode_results[i]["air_date"]%></td>
                <td><%= @episode_results[i]["episode"]%></td>
              </tr>
