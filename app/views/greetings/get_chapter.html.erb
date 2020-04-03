@@ -1,50 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-</head>
 <body>
-  <h1>Greetings#get_chapter</h1>
-  <p>Find me in app/views/greetings/get_chapter.html.erb</p>
+  <div class="container p-3 mb-2 bg-light text-dark">
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="display-1 bg-dark text-white"> Wubba lubba dub-dub</h1>
+        <p>Lo mínimo que debes saber para empezar a ser un fan de Rick and Morty</p>
+      </div>
+    </div>
 
-  <%i = 0%>
+    <%i = 0%>
 
-  <h1>A Greeting for You!</h1>
-  <p><%= @message %></p>
-  <p><%= @results %></p>
-  <p><%= @length %></p>
-
-
-  <div class="container">
-    <table style="width:100%">
-      <thead class="thead-dark">
-         <tr>
-           <th>#</th>
-           <th>Nombre capítulo</th>
-           <th>Fecha</th>
-           <th>Código</th>
-         </tr>
-      </thead>
-
-      <tbody>
-         <% while i< @length do %>
+    <div class="container">
+      <table class="table">
+        <thead class="thead-dark">
            <tr>
-             <th scope="row"><%=i%></th>
-             <td><%= @results[i]["name"]%></td>
-             <td><%= @results[i]["air_date"]%></td>
-             <td><%= @results[i]["episode"]%></td>
+             <th>#</th>
+             <th>Nombre</th>
+             <th>Fecha</th>
+             <th>Codigo</th>
            </tr>
-           <% i += 1%>
-         <% end %>
-       </tbody>
-     </table>
+        </thead>
+
+        <tbody>
+           <% while i< @length do %>
+             <tr>
+               <th scope="row"><%=i+1%></th>
+               <td><%= @results[i]["name"]%></td>
+               <td><%= @results[i]["air_date"]%></td>
+               <td><%= @results[i]["episode"]%></td>
+             </tr>
+             <% i += 1%>
+           <% end %>
+         </tbody>
+       </table>
+    </div>
   </div>
-
-
 </body>
