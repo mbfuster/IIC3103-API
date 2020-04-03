@@ -10,6 +10,8 @@ Versiones:
 
 * Versión de Rails: 6.0.2.2 
 
-* System dependencies
+* Versión de HTTP: 4.4.1
 
-* Configuration
+* Versión de Bootrstrap: bootstrap-sass-3.4.1
+
+* Dependencias
