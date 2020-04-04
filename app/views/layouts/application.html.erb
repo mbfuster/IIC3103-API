@@ -15,10 +15,10 @@
       <%= form_tag(search_path, :method => "get", id: "search-form", html: {class: 'form-inline'}) do %>
         <div class="row">
             <div class="col-md-8">
-            <%= text_field_tag :search, params[:search], placeholder: "Search Artists", class: "form-control" %>
+            <%= text_field_tag :search, params[:search], placeholder: "Escribe algo ..", class: "form-control" %>
             </div>
             <div class="col-md-4">
-            <%= submit_tag "Search", :class => 'btn btn-outline-light text-white my-2 my-sm-0 ',:name => nil%>
+            <%= submit_tag "Buscar", :class => 'btn btn-outline-light text-white my-2 my-sm-0 ',:name => nil%>
             </div>
           </div>
       <% end %>
