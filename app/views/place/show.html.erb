@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <div class="container pt-3">
+    <h3>Información por lugar</h3>
+    <div class="container p-3 mb-2 bg-light text-dark">
+      <h1 class="display-6" ><%=@location_results["name"]%></h1>
+
+      <div class="container pt-3">
+        <h3>Información básica</h3>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td>Tipo: </td>
+              <td><%=@location_results["type"]%></td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td>Dimension</td>
+              <td><%=@location_results["dimension"]%></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="container pt-3">
+        <h3>Residentes</h3>
+        <table class="table">
+          <tbody>
+          <%i=1%>
+          <%@location_residents.each do |c|%>
+            <tr>
+              <th scope="row"></th>
+              <td><%=i%></td>
+              <%nombre = c[1]%>
+              <td><%= link_to nombre, character_path(c[0])%></td>
+            </tr>
+            <%i+=1%>
+          <%end%>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</body>

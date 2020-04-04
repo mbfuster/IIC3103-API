@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <div class="container pt-3">
+    <h3>Información por personaje</h3>
+    <div class="container p-3 mb-2 bg-light text-dark">
+      <div class = "row">
+        <div class="col-md-4">
+          <%url = @character_result["image"]%>
+          <%=image_tag url%>
+        </div>
+        <div class="col-md-8">
+          <h1 class="display-6" ><%=@character_result["name"]%></h1>
+          <div class="container">
+            <h3>Información básica</h3>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th scope="row"></th>
+                  <td>Status: </td>
+                  <td><%=@character_result["status"]%></td>
+                </tr>
+                <tr>
+                  <th scope="row"></th>
+                  <td>Especie</td>
+                  <td><%=@character_result["species"]%></td>
+                </tr>
+                <tr>
+                  <th scope="row"></th>
+                  <td>Tipo:</td>
+                  <td><%=@character_result["type"]%></td>
+                </tr>
+                <tr>
+                  <th scope="row"></th>
+                  <td>Género:</td>
+                  <td><%=@character_result["gender"]%></td>
+                </tr>
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+
+
+      <div class="container pt-3">
+        <h3>Origen</h3>
+        <%origen = @character_origin["name"]%>
+        <p><%=link_to origen, place_path(@character_origin["id"])%></p>
+      </div>
+
+      <div class="container pt-3">
+        <h3>Ubicacion actual</h3>
+        <%location = @character_location["name"]%>
+        <p><%=link_to location, place_path(@character_location["id"])%></p>
+      </div>
+
+      <div class="container pt-3">
+        <h3>Episodios donde aparece</h3>
+        <table class="table">
+          <tbody>
+          <%i=1%>
+          <%@character_episodes.each do |c|%>
+            <tr>
+              <th scope="row"></th>
+              <td><%=i%></td>
+              <%nombre = c[1]%>
+              <td><%= link_to nombre, chapter_path(c[0])%></td>
+            </tr>
+            <%i+=1%>
+          <%end%>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</body>

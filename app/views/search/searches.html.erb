@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <div class="container pt-3">
+    <h3>Resultados de la búsqueda</h3>
+    <div class="container pt-3 mb-2 bg-light text-dark">
+
+      <div class="container pt-3">
+        <h2>Episodios</h2>
+        <table class="table">
+          <tbody>
+            <%if @found_ep%>
+              <%i=1%>
+              <%@results_episodes.each do |ep|%>
+                <tr>
+                  <th scope="row"></th>
+                    <td><%=i%></td>
+                    <%name = ep[1]%>
+                    <td><%= link_to name, chapter_path(ep[0])%></td>
+                </tr>
+                <%i+=1%>
+              <%end%>
+            <%else%>
+              <div class="container pt-3">
+                <h2 class="text-muted"> No hay Resultados</h2>
+              </div>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="container pt-3">
+        <h2>Personajes</h2>
+        <table class="table">
+          <tbody>
+            <%if @found_ch%>
+              <%i=1%>
+              <%@results_characters.each do |ch|%>
+                <tr>
+                  <th scope="row"></th>
+                    <td><%=i%></td>
+                    <%name = ch[1]%>
+                    <td><%= link_to name, chapter_path(ch[0])%></td>
+                </tr>
+                <%i+=1%>
+              <%end%>
+            <%else%>
+              <div class="container pt-3">
+                <h2 class="text-muted"> No hay Resultados</h2>
+              </div>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="container pt-3">
+        <h2>Lugares</h2>
+        <table class="table">
+          <tbody>
+            <%if @found_l%>
+              <%i=1%>
+              <%@results_locations.each do |l|%>
+                <tr>
+                  <th scope="row"></th>
+                    <td><%=i%></td>
+                    <%name = l[1]%>
+                    <td><%= link_to name, chapter_path(l[0])%></td>
+                </tr>
+                <%i+=1%>
+              <%end%>
+            <%else%>
+              <div class="container pt-3">
+                <h2 class="text-muted"> No hay Resultados</h2>
+              </div>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</body>

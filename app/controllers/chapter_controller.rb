@@ -7,13 +7,13 @@ class ChapterController < ApplicationController
     @chapter_result = results
     i = 0
     @episode_characters = []
-    while i < @chapter_result["characters"].length
-      q = @chapter_result["characters"][i]
+
+    @chapter_result["characters"].each do |q|
       body =  HTTP.get(q).body
       r = JSON.parse(body)
       aux = [r["id"],r["name"]]
       @episode_characters << aux
-
     end
+
   end
 end

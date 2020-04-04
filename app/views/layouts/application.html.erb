@@ -11,11 +11,20 @@
 
   <body>
     <nav class="navbar navbar-dark bg-dark text-white">
-      <a class="navbar-brand">WLDD</a>
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-        <button class="btn btn-outline-light text-white my-2 my-sm-0" type="submit">Buscar</button>
-      </form>
+      <a href="<%= root_path %>" class="navbar-brand">WLDD</a>
+      <%= form_tag(search_path, :method => "get", id: "search-form", html: {class: 'form-inline'}) do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search Artists", class: "form-control" %>
+            <%= submit_tag "Search", :class => 'btn btn-outline-light text-white my-2 my-sm-0 ',:name => nil%>
+      <% end %>
+      <!--<%=form_tag search_path, class:"form-inline" , :method => "get" do%>
+        <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" action="<%= search_path %>" method="GET">
+        <%= label_tag(:search, "Que quieres saber")%>
+        <%=button_to "Buscar", search_path, method: "get", class: "btn btn-outline-light text-white my-2 my-sm-0", type: "submit"%>
+        <%= text_field_tag :search, params[:search]%>
+        <%= submit_tag("Buscar")%>
+      <%end%>
+      </form>-->
     </nav>
     <%= yield %>
 
