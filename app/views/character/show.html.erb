@@ -49,14 +49,22 @@
 
       <div class="container pt-3">
         <h3>Origen</h3>
-        <%origen = @character_origin["name"]%>
-        <p><%=link_to origen, place_path(@character_origin["id"])%></p>
+        <%if !@no_origin%>
+          <%origen = @character_origin["name"]%>
+          <p><%=link_to origen, place_path(@character_origin["id"])%></p>
+        <%else%>
+          <p>Desconocido</p>
+        <%end%>
       </div>
 
       <div class="container pt-3">
         <h3>Ubicacion actual</h3>
-        <%location = @character_location["name"]%>
-        <p><%=link_to location, place_path(@character_location["id"])%></p>
+        <%if !@no_location%>
+          <%location = @character_location["name"]%>
+          <p><%=link_to location, place_path(@character_location["id"])%></p>
+        <%else%>
+          <p>Desconocido</p>
+        <%end%>
       </div>
 
       <div class="container pt-3">

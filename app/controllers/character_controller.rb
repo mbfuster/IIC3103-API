@@ -6,13 +6,22 @@ class CharacterController < ApplicationController
     results = JSON.parse(body)
     @character_result = results
 
-    origin_body = HTTP.get(results["origin"]["url"]).body
-    ob = JSON.parse(origin_body)
-    @character_origin = ob
 
-    location_body = HTTP.get(results["location"]["url"]).body
-    lb = JSON.parse(location_body)
-    @character_location = lb
+    if !results["origin"]["url"].empty?
+      origin_body = HTTP.get(results["origin"]["url"]).body
+      ob = JSON.parse(origin_body)
+      @character_origin = ob
+    else
+      @no_origin = TRUE
+    end
+
+    if !results["location"]["url"].empty?
+      location_body = HTTP.get(results["location"]["url"]).body
+      lb = JSON.parse(location_body)
+      @character_location = lb
+    else
+      @no_location = TRUE
+    end
 
     @character_episodes = []
     results["episode"].each do |e|

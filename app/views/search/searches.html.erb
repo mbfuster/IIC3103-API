@@ -41,7 +41,7 @@
                   <th scope="row"></th>
                     <td><%=i%></td>
                     <%name = ch[1]%>
-                    <td><%= link_to name, chapter_path(ch[0])%></td>
+                    <td><%= link_to name, character_path(ch[0])%></td>
                 </tr>
                 <%i+=1%>
               <%end%>
@@ -65,7 +65,7 @@
                   <th scope="row"></th>
                     <td><%=i%></td>
                     <%name = l[1]%>
-                    <td><%= link_to name, chapter_path(l[0])%></td>
+                    <td><%= link_to name, place_path(l[0])%></td>
                 </tr>
                 <%i+=1%>
               <%end%>
