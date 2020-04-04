@@ -2,7 +2,7 @@
 
 Esta aplicación web consume la API de https://rickandmortyapi.com/ visualizando información sobre sus personajes, episodios entre otros datos.
 
-URL: 
+URL: https://wldd.herokuapp.com/
 
 Versiones:
 
