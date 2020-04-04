@@ -12,7 +12,7 @@ class SearchController < ApplicationController
     if results_episodes["error"]
       @found_ep = FALSE
     else
-      page_counter = 1
+      page_counter = 2
       results_episodes["results"].each do |rep|
         aux = [rep["id"],rep["name"]]
         @results_episodes << aux
@@ -28,6 +28,7 @@ class SearchController < ApplicationController
           @results_episodes << aux
         end
         next_p = r["info"]["next"]
+        page_counter += 1
       end
     end
 
@@ -36,25 +37,19 @@ class SearchController < ApplicationController
     request_ch = "https://rickandmortyapi.com/api/character/?name="+ @search.to_s
     body_ch = HTTP.get(request_ch).body
     results_characters = JSON.parse(body_ch)
-    puts "------------------------------------------------------------------------"
-
-    puts results_characters["info"]["next"]
     @results_characters = []
     @found_ch = TRUE
     if results_characters["error"]
       @found_ch = FALSE
     else
-      page_counter = 1
+      page_counter = 2
       results_characters["results"].each do |rch|
         aux = [rch["id"],rch["name"]]
         @results_characters << aux
       end
       next_p =  results_characters["info"]["next"].to_s
-      puts "------------------------------------------------------------------------"
-
-      puts next_p
-      puts "------------------------------------------------------------------------"
-
+      #next_p = "https://rickandmortyapi.com/api/character/?page"+ page_counter.to_s +"&name="+ @search.to_s
+      #Este cambio no está guardado .. el next_p descrptivo
       while next_p && results_characters["info"]["pages"] != 1 && page_counter <= results_characters["info"]["pages"] do
         request_ch = next_p
         body_ch = HTTP.get(request_ch).body
@@ -64,6 +59,7 @@ class SearchController < ApplicationController
           @results_characters << aux
         end
         next_p = r["info"]["next"]
+        page_counter += 1
       end
     end
 
@@ -77,10 +73,10 @@ class SearchController < ApplicationController
     if results_locations["error"]
       @found_l = FALSE
     else
-      page_counter = 1
+      page_counter = 2
       results_locations["results"].each do |rl|
         aux = [rl["id"],rl["name"]]
-        @results_characters << aux
+        @results_locations << aux
       end
       next_p = results_locations["info"]["next"]
       while next_p && results_locations["info"]["pages"] != 1 && page_counter <= results_locations["info"]["pages"] do
@@ -89,9 +85,10 @@ class SearchController < ApplicationController
         r = JSON.parse(body_l)
         r["results"].each do |rl|
           aux = [rl["id"],rl["name"]]
-          @results_characters << aux
+          @results_locations << aux
         end
         next_p = r["info"]["next"]
+        page_counter += 1
       end
     end
 
