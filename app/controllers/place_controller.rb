@@ -6,11 +6,21 @@ class PlaceController < ApplicationController
     results = JSON.parse(body)
     @location_results = results
     @location_residents = []
+    res_ids = ""
     @location_results["residents"].each do |q|
-      body =  HTTP.get(q).body
-      r = JSON.parse(body)
-      aux = [r["id"],r["name"]]
-      @location_residents << aux
+      q.slice!("https://rickandmortyapi.com/api/character/")
+      res_ids += q + ","
     end
+
+    res_ids.slice!(res_ids[-1])
+    puts "--------------------------------------------------------------------"
+    puts res_ids
+    body_r =  HTTP.get("https://rickandmortyapi.com/api/character/"+res_ids).body
+    r_r = JSON.parse(body_r)
+    r_r.each do |rr|
+      aux = [rr["id"],rr["name"]]
+      @location_residents<< aux
+    end
+
   end
 end
