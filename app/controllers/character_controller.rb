@@ -1,7 +1,8 @@
 class CharacterController < ApplicationController
   def show
     @character_id = params[:id]
-    request = "https://rickandmortyapi.com/api/character/"+ @character_id.to_s
+    @url = "https://integracion-rick-morty-api.herokuapp.com/api/"
+    request = @url + "character/"+ @character_id.to_s
     body = HTTP.get(request).body
     results = JSON.parse(body)
     @character_result = results
@@ -26,13 +27,13 @@ class CharacterController < ApplicationController
     @character_episodes = []
     ch_ep_ids = ""
     results["episode"].each do |q|
-      q.slice!("https://rickandmortyapi.com/api/episode/")
+      q.slice!(@url + "episode/")
       ch_ep_ids += q + ","
     end
 
     int = ch_ep_ids.length - 2
     ch_ep_ids = ch_ep_ids[0..int]
-    ep_body =  HTTP.get("https://rickandmortyapi.com/api/episode/" + ch_ep_ids).body
+    ep_body =  HTTP.get(@url + "episode/" + ch_ep_ids).body
     ch_r = JSON.parse(ep_body)
 
     if ch_r.instance_of?Array
