@@ -12,15 +12,19 @@ class PlaceController < ApplicationController
       res_ids += q + ","
     end
 
-    res_ids.slice!(res_ids[-1])
-    puts "--------------------------------------------------------------------"
-    puts res_ids
+    int = res_ids.length - 2
+    res_ids = res_ids[0..int]
     body_r =  HTTP.get("https://rickandmortyapi.com/api/character/"+res_ids).body
     r_r = JSON.parse(body_r)
-    r_r.each do |rr|
-      aux = [rr["id"],rr["name"]]
+
+    if r_r.instance_of?Array
+      r_r.each do |rr|
+        aux = [rr["id"],rr["name"]]
+        @location_residents<< aux
+      end
+    else
+      aux = [r_r["id"],r_r["name"]]
       @location_residents<< aux
     end
-
   end
 end

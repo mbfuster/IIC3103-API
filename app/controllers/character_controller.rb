@@ -24,21 +24,25 @@ class CharacterController < ApplicationController
     end
 
     @character_episodes = []
-    ch_ids = ""
+    ch_ep_ids = ""
     results["episode"].each do |q|
-      puts q
       q.slice!("https://rickandmortyapi.com/api/episode/")
-      ch_ids += q + ","
+      ch_ep_ids += q + ","
     end
 
-    ch_ids.slice!(ch_ids[-1])
-    ep_body =  HTTP.get("https://rickandmortyapi.com/api/episode/" + ch_ids).body
+    int = ch_ep_ids.length - 2
+    ch_ep_ids = ch_ep_ids[0..int]
+    ep_body =  HTTP.get("https://rickandmortyapi.com/api/episode/" + ch_ep_ids).body
     ch_r = JSON.parse(ep_body)
 
-    ch_r.each do |chr|
-      aux = [chr["id"],chr["name"]]
+    if ch_r.instance_of?Array
+      ch_r.each do |chr|
+        aux = [chr["id"],chr["name"]]
+        @character_episodes << aux
+      end
+    else
+      aux = [ch_r["id"],ch_r["name"]]
       @character_episodes << aux
     end
-
   end
 end

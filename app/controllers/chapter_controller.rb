@@ -14,15 +14,21 @@ class ChapterController < ApplicationController
       res_ids += q + ","
     end
 
-    res_ids.slice!(res_ids[-1])
+    int = res_ids.length - 2
+    res_ids = res_ids[0..int]
     puts "--------------------------------------------------------------------"
     puts res_ids
     body_r =  HTTP.get("https://rickandmortyapi.com/api/character/"+res_ids).body
     r_r = JSON.parse(body_r)
-    r_r.each do |rr|
-      aux = [rr["id"],rr["name"]]
+
+    if r_r.instance_of?Array
+      r_r.each do |rr|
+        aux = [rr["id"],rr["name"]]
+        @episode_characters<< aux
+      end
+    else
+      aux = [r_r["id"],r_r["name"]]
       @episode_characters<< aux
     end
-
   end
 end
